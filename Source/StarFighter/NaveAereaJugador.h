@@ -13,10 +13,10 @@ UCLASS()
 class STARFIGHTER_API ANaveAereaJugador : public ANaveAerea
 {
 	GENERATED_BODY()
-		// N: 1 La Camara solo se chata en La nave jugador
-		/** The camera */
-		UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-		class UCameraComponent* CameraComponent;
+	// N: 1 La Camara solo se chata en La nave jugador
+	/** The camera */
+	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* CameraComponent;
 
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))

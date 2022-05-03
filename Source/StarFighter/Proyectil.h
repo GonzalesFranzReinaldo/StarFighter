@@ -9,14 +9,14 @@
 class UProjectileMovementComponent;
 class UStaticMeshComponent;
 
-UCLASS()
+UCLASS(config=Game)
 class STARFIGHTER_API AProyectil : public AActor
 {
 	GENERATED_BODY()
 
-		/*Sphere collision component*/
-		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Projectile", meta = (AllowPrivateAccess = "true"))
-		UStaticMeshComponent* ProjectileMesh;
+	/*Sphere collision component*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Projectile", meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* ProjectileMesh;
 
 	/*Proyectile movement component*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
@@ -29,7 +29,7 @@ public:
 
 	/** Function to handle the projectile hitting something */
 	UFUNCTION()
-		void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 	/** Returns ProjectileMesh subobject **/
 	FORCEINLINE UStaticMeshComponent* GetProjectileMesh() const { return ProjectileMesh; }
