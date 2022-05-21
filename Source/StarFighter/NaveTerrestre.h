@@ -14,4 +14,9 @@ class STARFIGHTER_API ANaveTerrestre : public ANave
 {
 	GENERATED_BODY()
 	
+public:
+	ANaveTerrestre();
+
+	float MovingTX;
+	float MovingTY;
 };

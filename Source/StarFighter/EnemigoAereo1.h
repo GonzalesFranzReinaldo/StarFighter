@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NaveAerea.h"
+#include "NaveAereaJugador.h"
 #include "EnemigoAereo1.generated.h"
 
 /**
@@ -14,18 +15,35 @@ class STARFIGHTER_API AEnemigoAereo1 : public ANaveAerea
 {
 	GENERATED_BODY()
 
+private:
+
+	uint32 bCanFire : 1;
+	FTimerHandle TimerHandle_ShotTimerExpired;
+
+	float MovingX;
+	float MovingY;
+
 public:
+	FTimerHandle MemberTimerHandle;
 
 	AEnemigoAereo1();
 
-	// Sets default values for this actor's properties
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
+		FVector GunOffset;
+
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
+		float FireRate;
+
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
+		float Speed;
+
+	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
-	UPROPERTY(Editanywhere)
-		float SpeedScale;
-
-	float RunningTime;
+	void FireEnemigo();
+	void FireShotEnemigo(FVector FireDirectionEnemigo);
+	void ShotTimerExpired();
 };

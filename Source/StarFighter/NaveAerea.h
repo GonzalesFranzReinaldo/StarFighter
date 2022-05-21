@@ -13,5 +13,5 @@ UCLASS()
 class STARFIGHTER_API ANaveAerea : public ANave
 {
 	GENERATED_BODY()
-	
+
 };

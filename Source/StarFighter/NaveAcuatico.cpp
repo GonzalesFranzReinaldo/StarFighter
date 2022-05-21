@@ -3,3 +3,8 @@
 
 #include "NaveAcuatico.h"
 
+ANaveAcuatico::ANaveAcuatico()
+{
+	MovingTX = 1000.f;
+	MovingTY = 1000.f;
+}

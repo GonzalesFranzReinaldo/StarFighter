@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "StarFighterGameModeBase.generated.h"
 
+
 /**
  * 
  */
@@ -14,4 +15,7 @@ class STARFIGHTER_API AStarFighterGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	void SpawEnemigo();
+	virtual void BeginPlay() override;
 };

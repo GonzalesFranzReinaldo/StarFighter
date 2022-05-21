@@ -6,7 +6,8 @@
 #include "Proyectil.h"
 #include "Cola.h"
 #include "Bala.generated.h"
-#include "Engine.h"
+
+//#include "Engine.h"
 //#include "GameFramework/Actor"
 
 /**
@@ -17,7 +18,7 @@ class STARFIGHTER_API ABala : public AProyectil
 {
 	GENERATED_BODY()
 
-public:
+/**public:
 	ABala();
 
 	// Sets default values for this actor's properties
@@ -36,5 +37,5 @@ public:
 	//Cola<class Proyectil*> ColaBalas;
 
 	Cola<int> ColaEnteros;
-	Cola<float> ColaFlotantes;
+	Cola<float> ColaFlotantes;*/
 };

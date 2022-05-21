@@ -13,5 +13,11 @@ UCLASS()
 class STARFIGHTER_API ANaveAcuatico : public ANave
 {
 	GENERATED_BODY()
+
+public: 
+	ANaveAcuatico();
+
+	float MovingTX;
+	float MovingTY;
 	
 };

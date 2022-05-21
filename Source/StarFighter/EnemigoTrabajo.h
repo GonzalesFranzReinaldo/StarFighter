@@ -3,47 +3,43 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "NaveTerrestre.h"
-#include "NaveAereaJugador.h"
-#include "EnemigoTerrestre1.generated.h"
+#include "NaveAerea.h"
+#include "EnemigoTrabajo.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class STARFIGHTER_API AEnemigoTerrestre1 : public ANaveTerrestre
+class STARFIGHTER_API AEnemigoTrabajo : public ANaveAerea
 {
 	GENERATED_BODY()
 
 private:
-
-	AEnemigoTerrestre1();
 	uint32 bCanFire : 1;
-	FTimerHandle TimerHandle_ShotTimerExpired;
 
 public:
 
+	AEnemigoTrabajo();
+
+	FTimerHandle TimerHandle_ShotTimerExpired;
 	FTimerHandle MemberTimerHandle;
+
+	virtual void BeginPlay() override;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
 		FVector GunOffset;
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
-		float FireRate; 
+		float FireRate;
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
 		float Speed;
 
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-	// Called every frame
-	virtual void Tick(float Deltaseconds) override;
+	void Tick(float DeltaSeconds);
 
 	void FireEnemigo();
-	void FireShotEnemigo(FVector FireDirectionEnemigo);
+	void FireNaveEnemigo(FVector FireDirectionEnemigo);
 	void ShotTimerExpired();
 
-
-	//float RunningTime;
-
-
+	float MovingTX;
+	float MovingTY;
+	
 };

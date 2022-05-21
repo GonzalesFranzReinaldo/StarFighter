@@ -3,10 +3,10 @@
 
 #include "Bala.h"
 
-ABala::ABala()
+/**ABala::ABala()
 {
 	// Set this actor to call Tick() every frame. You can turn this off to improve performance if you dont need it.
-	PrimaryActorTick.bCanEverTick = true;
+	/*PrimaryActorTick.bCanEverTick = true;
 
 	RootComp = CreateDefaultSubobject<USceneComponent>(TEXT("RootComp"));
 
@@ -70,4 +70,4 @@ void ABala::Tick(float DeltaTime)
 	if (BulletExpiry > 3) {
 		Destroy();
 	}
-}
+}*/

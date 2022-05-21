@@ -84,7 +84,6 @@ void ANaveAereaJugador::Tick(float DeltaSeconds)
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
 
 	}
-
 }
 
 void ANaveAereaJugador::Fire() {

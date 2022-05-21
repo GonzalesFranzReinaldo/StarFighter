@@ -37,6 +37,7 @@ public:
 	static const FName MoveForwardBinding;
 	static const FName MoveRightBinding;
 
+
 private:
 
 	/* Float to control firing */
@@ -54,6 +55,7 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override; 
 
+	// Fire 
 	void Fire();
 
 	/* Fire a shot in the specified direction */

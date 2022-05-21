@@ -2,15 +2,17 @@
 
 
 #include "Bomba.h"
+
 //#include "Kismet/GameplayStatics.h"
+
 //#include "Engine/CollisionProfile.h"
 //#include "GameFramework/SpringArmComponent.h"
 
 
-ABomba::ABomba()
+/**ABomba::ABomba()
 {
 	// Use a sphere as a simple collision representation
-	/*CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComp"));
+	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComp"));
 	CollisionComponent->InitSphereRadius(5.0f);
 	CollisionComponent->BodyInstance.SetCollisionProfileName("Projectile");
 	CollisionComponent->OnComponentHit.AddDynamic(this, &ABomba::OnHit);		// set up a notification for when this component hits something
@@ -20,11 +22,11 @@ ABomba::ABomba()
 	CollisionComponent->CanCharacterStepUpOn = ECB_No;
 
 	// Set as root component
-	RootComponent = CollisionComponent;*/
+	RootComponent = CollisionComponent;
 
 }
 
-/*void ABomba::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+void ABomba::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this))
@@ -32,16 +34,16 @@ ABomba::ABomba()
 
 		OnDetonate();
 	}
-} */
+} 
 
 void ABomba::BeginPlay()
 {
-	/*Super::BeginPlay();
+	Super::BeginPlay();
 	FTimerHandle handle;
-	GetWorld()->GetTimerManager().SetTimer(handle, this, &ABomba::OnDetonate, 5.f, false);*/
+	GetWorld()->GetTimerManager().SetTimer(handle, this, &ABomba::OnDetonate, 5.f, false);
 }
 
-/*void ABomba::OnDetonate()
+void ABomba::OnDetonate()
 {
 	UParticleSystemComponent* Explosion = UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
 	Explosion->SetRelativeScale3D(FVector(4.f));
