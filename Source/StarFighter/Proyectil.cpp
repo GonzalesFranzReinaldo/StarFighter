@@ -3,6 +3,8 @@
 
 #include "Proyectil.h"
 #include "Bomba.h"
+#include "MyInventoryActor.h"
+#include "MyInventoryComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
@@ -37,13 +39,20 @@ AProyectil::AProyectil()
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
 
+	//Inventario
+	ProyectilInventory = CreateDefaultSubobject<UMyInventoryComponent>("MyInventory");
+
+	//Ship Info
+	ProyectilInfo.Add("VelocidadProyectil", 0);
+
+
 }
 
 // Called when the game starts or when spawned
 void AProyectil::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -62,4 +71,75 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 	}
 
 	Destroy();
+}
+
+void AProyectil::TakeItemP(AMyInventoryActor* MyInventoryItem)
+{
+	MyInventoryItem->PickUp();
+	ProyectilInventory->AddToInventory(MyInventoryItem);
+}
+
+void AProyectil::DropItemP()
+{
+	if (ProyectilInventory->ShipInventoryActor.Num() == 0)
+	{
+		return;
+	}
+	AMyInventoryActor* Item = ProyectilInventory->ShipInventoryActor.Last();
+	ProyectilInventory->RemoveFromInventory(Item);
+	//should probably use scaled bounding box
+	FVector ItemOrigin;
+	FVector ItemBounds;
+	Item->GetActorBounds(false, ItemOrigin, ItemBounds);
+	FTransform PutDownLocation = GetTransform() + FTransform(RootComponent->GetForwardVector() * ItemBounds.GetMax());
+	Item->PutDown(PutDownLocation);
+}
+
+void AProyectil::ShowInventoryP()
+{
+	for (auto& Elem : ProyectilInfo) {
+		GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%s = %d"), *Elem.Key, Elem.Value));
+	}
+}
+
+void AProyectil::TestP()
+{
+	TSet<int>EjemploSet;
+	EjemploSet.Add(1);
+	EjemploSet.Add(2);
+	EjemploSet.Add(3);
+	EjemploSet.Add(1);  //duplicate: won't be addeed
+	EjemploSet.Add(1);  //duplicate: won't be addeed
+
+	for (auto It = EjemploSet.CreateConstIterator(); It; ++It) {
+
+		GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%d"), *It));
+	}
+}
+
+void AProyectil::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation,
+	FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+{
+	AMyInventoryActor* ComeC = Cast<AMyInventoryActor>(Other);
+	if (ComeC != nullptr) {
+
+		for (auto& Elem : ProyectilInfo) {
+			GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%s = %d"), *Elem.Key, Elem.Value));
+		}
+
+		FString vp = "VelocidadProyectil";
+		for (auto& pair : ProyectilInfo) {
+
+			if (pair.Key == vp) {
+
+				if (pair.Value > 0) {
+
+					pair.Value = pair.Value - 1;
+					ProjectileMovement->InitialSpeed = -1000.f;
+					ProjectileMovement->MaxSpeed = -1000.f;
+					break;
+				}
+			}
+		}
+	}
 }
