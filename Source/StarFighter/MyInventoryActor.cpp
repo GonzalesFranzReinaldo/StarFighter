@@ -49,7 +49,7 @@ void AMyInventoryActor::Tick(float DeltaSeconds)
 	if (Movement.SizeSquared() > 0.0f)
 	{
 		const FRotator NewRotation = Movement.Rotation();
-
+		
 		FHitResult Hit(1.0f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
 	}

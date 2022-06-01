@@ -292,7 +292,7 @@ void ANaveAereaJugador::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UP
 
 				if (pair.Value > 0) {
 
-					pair.Value = pair.Value + 20;
+					pair.Value = pair.Value - 20;
 					Vida = Vida + 20;
 					break;
 				}

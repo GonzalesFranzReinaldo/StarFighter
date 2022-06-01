@@ -21,8 +21,8 @@ public:
 	ANave();
 	// N:3 Para moverse a una velocidad donde todos heredan del padre
 	/* The speed our ship moves around the level */
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-	float MoveSpeed;
+	/*UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+	float MoveSpeed;*/
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 		class USoundBase* FireSound;
@@ -35,6 +35,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+		float MoveSpeed;
 
 public:	
 	// Called every frame

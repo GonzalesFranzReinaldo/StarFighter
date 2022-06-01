@@ -14,6 +14,7 @@ UCLASS()
 class STARFIGHTER_API AStarFighterGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
 	
 public:
 	void SpawEnemigo();

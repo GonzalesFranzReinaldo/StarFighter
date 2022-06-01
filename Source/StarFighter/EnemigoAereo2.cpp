@@ -83,11 +83,11 @@ void AEnemigoAereo2::FireEnemigo()
 	FireShotEnemigo(FireDirectionEnemigo);
 }
 
-void AEnemigoAereo2::FireShotEnemigo(FVector FireDirectionEnemigo)
+void AEnemigoAereo2::FireShotEnemigo(FVector FireDirection)
 {
 	if (bCanFire == true)
 	{
-		if (FireDirectionEnemigo.SizeSquared() > 0.0f)
+		if (FireDirection.SizeSquared() > 0.0f)
 		{
 			ANaveAereaJugador* avatar = Cast<ANaveAereaJugador>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 			if (!avatar)
