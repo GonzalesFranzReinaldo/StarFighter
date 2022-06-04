@@ -4,6 +4,13 @@
 #include "Nave.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/CollisionProfile.h"
+#include "UObject/ConstructorHelpers.h"
+
+
+const FName ANave::MoveForwardBinding("MoveForward");
+const FName ANave::MoveRightBinding("MoveRight");
+const FName ANave::FireBinding("Fire");
+
 // Sets default values
 ANave::ANave()
 {

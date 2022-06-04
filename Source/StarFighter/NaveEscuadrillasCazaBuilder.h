@@ -4,26 +4,25 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "NaveEnemigaEscuadrillasBuilder.h"
-#include "NaveEnemigaEscuadrillaCazaBuilde.generated.h"
+#include "NaveEnemigaEspacial.h"
+#include "NaveEscuadrillasBuilder.h"
+#include "NaveEscuadrillasCazaBuilder.generated.h"
 
 UCLASS()
-class STARFIGHTER_API ANaveEnemigaEscuadrillaCazaBuilde : public APawn, public INaveEnemigaEscuadrillasBuilder
+class STARFIGHTER_API ANaveEscuadrillasCazaBuilder : public APawn, public INaveEscuadrillasBuilder
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this pawn's properties
-	ANaveEnemigaEscuadrillaCazaBuilde();
+	ANaveEscuadrillasCazaBuilder();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-private:
-	// Propiedad donde le mando la clase Nave enemiga espacial para construirlo
-	UPROPERTY(VisibleAnywhere, Category = "Nave Enemiga Esapacial Caza")
+	UPROPERTY(VisibleAnywhere, Category = "Nave Enemigo Caza")
 		class ANaveEnemigaEspacial* NaveEnemigaEspacial;
 
 public:	
@@ -36,7 +35,7 @@ public:
 	virtual void BuildVelocidad_Movimiento() override;
 	virtual void BuildResistencia_Vida() override;
 	virtual void BuildSistemaRotacion() override;
-	virtual void BuildSistemaNivelDano() override;
 	virtual void BuildSistemaEscudo() override;
+
 	virtual class ANaveEnemigaEspacial* GetNaveEnemigaEspacial() override;
 };

@@ -21,8 +21,8 @@ public:
 	ANave();
 	// N:3 Para moverse a una velocidad donde todos heredan del padre
 	/* The speed our ship moves around the level */
-	/*UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-	float MoveSpeed;*/
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+	float MoveSpeed;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 		class USoundBase* FireSound;
@@ -32,12 +32,14 @@ public:
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	float Energy;
 
+	static const FName MoveForwardBinding;
+	static const FName MoveRightBinding;
+	static const FName FireBinding;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float MoveSpeed;
 
 public:	
 	// Called every frame
@@ -46,8 +48,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// N:6 esto es un metodo donde le que le devuelva la malla  
-public:
+
 	/** Returns ShipMeshComponent subobject **/
 	FORCEINLINE class UStaticMeshComponent* GetShipMeshComponent() const { return ShipMeshComponent; }
 
+	FORCEINLINE void SetShipMeshComponent(class UStaticMeshComponent* _ShipMeshComponent) { ShipMeshComponent = _ShipMeshComponent; }
 };

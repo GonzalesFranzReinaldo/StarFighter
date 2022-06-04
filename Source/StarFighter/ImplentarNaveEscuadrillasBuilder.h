@@ -4,23 +4,23 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "ImplementarNaveEnemigaBuilder.generated.h"
+#include "ImplentarNaveEscuadrillasBuilder.generated.h"
 
 UCLASS()
-class STARFIGHTER_API AImplementarNaveEnemigaBuilder : public AActor
+class STARFIGHTER_API AImplentarNaveEscuadrillasBuilder : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AImplementarNaveEnemigaBuilder();
+	AImplentarNaveEscuadrillasBuilder();
 
-/*private:
+private:
 	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
-		class ANaveEnemigaCazaBuilder* NaveEnemigaCazaBuilder;
+		class ANaveEscuadrillasCazaBuilder* NaveEscuadrillasCazaBuilder;
 
 	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
-		class ADirectorNaveEnemigaBuilder *DirectorNaveEnemigaBuilder;*/
+		class ADirectorNaveEscuadrillasBuilder* DirectorNaveEscuadrillasBuilder;
 
 protected:
 	// Called when the game starts or when spawned
