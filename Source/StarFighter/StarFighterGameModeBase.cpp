@@ -2,19 +2,26 @@
 
 
 #include "StarFighterGameModeBase.h"
-#include "EnemigoTrabajo.h"
+#include "NavesEnemigas.h"
+#include "NaveEnemigaBuilder.h"
+#include "DirectorNaveEnemigaBuilder.h" 
+#include "NaveEnemigaCazaBuilder.h"
 
-void AStarFighterGameModeBase::SpawEnemigo()
-{
-	float newX = rand() % 100 + 1;
-	float newY = rand() % 100 + 1;
-	UWorld* const World = GetWorld();
-	World->SpawnActor<AEnemigoTrabajo>(FVector(400.0f, -400.0f, 200), FRotator::ZeroRotator);
-}
 
 void AStarFighterGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SpawEnemigo();
+
+	// Es el main() del builder
+	NaveEnemigaCazaBuilder = GetWorld()->SpawnActor<ANaveEnemigaCazaBuilder>(ANaveEnemigaCazaBuilder::StaticClass());
+	DirectorNaveEnemigaBuilder = GetWorld()->SpawnActor<ADirectorNaveEnemigaBuilder>(ADirectorNaveEnemigaBuilder::StaticClass());
+
+	DirectorNaveEnemigaBuilder->SetNaveEnemigaBuilder(NaveEnemigaCazaBuilder);
+	DirectorNaveEnemigaBuilder->ConstruirNavesEnemigas();
+
+	ANavesEnemigas* NavesEnemigas = DirectorNaveEnemigaBuilder->GetNavesEnemigas();
+	NavesEnemigas->CaracteristicasNavesEnemigas();
+
 }
+

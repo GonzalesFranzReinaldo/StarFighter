@@ -15,8 +15,13 @@ class STARFIGHTER_API AStarFighterGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 
-	
 public:
-	void SpawEnemigo();
 	virtual void BeginPlay() override;
+
+private:
+	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
+		class ANaveEnemigaCazaBuilder* NaveEnemigaCazaBuilder;
+
+	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
+		class ADirectorNaveEnemigaBuilder* DirectorNaveEnemigaBuilder;
 };

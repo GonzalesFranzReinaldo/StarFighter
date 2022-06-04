@@ -91,7 +91,6 @@ void ANaveAereaEnemigoNodriza::FireShot(FVector FireDirection)
 			if (World != nullptr)
 			{
 				World->SpawnActor<AProyectil>(SpawnLocation, FireRotation);
-				//World->SpawnActor<AProyectil>(SpawnLocation, FireRotation);
 				World->SpawnActor<AProyectil>(SpawnLocation + FVector(50, -50, 0), FireRotation);
 				World->SpawnActor<AProyectil>(SpawnLocation + FVector(-50, 50, 0), FireRotation);
 				World->SpawnActor<AProyectil>(SpawnLocation + FVector(100, -100, 0), FireRotation);
