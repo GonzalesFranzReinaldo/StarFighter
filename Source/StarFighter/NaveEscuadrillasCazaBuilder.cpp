@@ -13,11 +13,11 @@ ANaveEscuadrillasCazaBuilder::ANaveEscuadrillasCazaBuilder()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//static ConstructorHelpers::FObjectFinder<UMaterialInterface> MaterialMesh(TEXT("MaterialInterface'/Game/TwinStick/Meshes/OrangeMaterial.OrangeMaterial'"));
+	static ConstructorHelpers::FObjectFinder<UMaterialInterface> MaterialMesh(TEXT("MaterialInterface'/Game/TwinStick/Meshes/OrangeMaterial.OrangeMaterial'"));
 
 	//static ConstructorHelpers::FObjectFinder<UMaterialInterface> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 
-	/*UWorld* const World = GetWorld();
+	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
 		FVector SpawnLocation = FVector(200.0f, -200.0f, 60.0f);
@@ -28,7 +28,7 @@ ANaveEscuadrillasCazaBuilder::ANaveEscuadrillasCazaBuilder()
 		NaveEnemigaEspacial->GetShipMeshComponent()->SetMaterial(0, MaterialMesh.Object);
 
 		NaveEnemigaEspacial->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
-	}*/
+	}
 }
 
 // Called when the game starts or when spawned

@@ -17,7 +17,7 @@ void AStarFighterGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	/*UWorld* const World = GetWorld();
+	UWorld* const World = GetWorld();
 
 	//Spawn Builder and Engineer
 	NaveEscuadrillasCazaBuilder = GetWorld()->SpawnActor<ANaveEscuadrillasCazaBuilder>(ANaveEscuadrillasCazaBuilder::StaticClass());
@@ -29,7 +29,7 @@ void AStarFighterGameModeBase::BeginPlay()
 
 	//Get the Engineer's Lodging and Logs the created buildings
 	ANaveEnemigaEspacial* NaveEnemiga = Director->GetNaveEnemigaEspacial();
-	NaveEnemiga->CaracteristicasNaveEnemigaEspacial();*/
+	NaveEnemiga->CaracteristicasNaveEnemigaEspacial();
 
 	//NaveEnemigaEspacial = GetWorld()->SpawnActor<ANaveEnemigaEspacial>(ANaveEnemigaEspacial::StaticClass());
 	//NaveEnemigaEspacial->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
