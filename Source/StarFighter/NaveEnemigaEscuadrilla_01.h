@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "Nave.h"
-#include "NaveEnemigaEspacial.generated.h"
+#include "NaveEnemigaEscuadrilla_01.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class STARFIGHTER_API ANaveEnemigaEspacial : public ANave
+class STARFIGHTER_API ANaveEnemigaEscuadrilla_01 : public ANave
 {
 	GENERATED_BODY()
-	
+
 private:
 
 	// Estos se convertiran en clases
@@ -29,5 +29,5 @@ public:
 	void SetSistemaRotacion(FString _SistemaRotacion) { SistemaRotacion = _SistemaRotacion; }
 	void SetSistemaEscudo(FString _SistemaEscudo) { SistemaEscudo = _SistemaEscudo; }
 
-	void CaracteristicasNaveEnemigaEspacial();
+	void CaracteristicasNaveEnemigaEscuadrilla_01();
 };

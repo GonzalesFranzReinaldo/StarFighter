@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "NaveEnemigaEspacial.h"
+#include "NaveEnemigaEscuadrilla_01.h"
 
-void ANaveEnemigaEspacial::CaracteristicasNaveEnemigaEspacial()
+void ANaveEnemigaEscuadrilla_01::CaracteristicasNaveEnemigaEscuadrilla_01()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%s "), *Velocidad_Movimiento));
 	GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%s "), *Resistencia_Vida));

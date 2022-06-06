@@ -19,15 +19,25 @@ void AImplentarNaveEscuadrillasBuilder::BeginPlay()
 	Super::BeginPlay();
 	
 	NaveEscuadrillasCazaBuilder = GetWorld()->SpawnActor<ANaveEscuadrillasCazaBuilder>(ANaveEscuadrillasCazaBuilder::StaticClass());
-
 	DirectorNaveEscuadrillasBuilder = GetWorld()->SpawnActor<ADirectorNaveEscuadrillasBuilder>(ADirectorNaveEscuadrillasBuilder::StaticClass());
 
+	//DirectorNaveEscuadrillasBuilder->SetNaveEscuadrillasBuilder(NaveEscuadrillasCazaBuilder);
 
-	DirectorNaveEscuadrillasBuilder->SetNaveEscuadrillasBuilder(NaveEscuadrillasCazaBuilder);
-	DirectorNaveEscuadrillasBuilder->ConstruirNaveEnemigaEspacial();
+	DirectorNaveEscuadrillasBuilder->ConstruirNaveEnemigaEscuadrilla_01();
+	DirectorNaveEscuadrillasBuilder->ConstruirNaveEnemigaEscuadrilla_02();
+	DirectorNaveEscuadrillasBuilder->ConstruirNaveEnemigaEscuadrilla_03();
 
-	ANaveEnemigaEspacial* NaveEnemiga = DirectorNaveEscuadrillasBuilder->GetNaveEnemigaEspacial();
-	NaveEnemiga->CaracteristicasNaveEnemigaEspacial();
+	// Implementar Nave Enmiga Escuadrilla 01
+	ANaveEnemigaEscuadrilla_01* NaveEnemiga01 = DirectorNaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_01();
+	NaveEnemiga01->CaracteristicasNaveEnemigaEscuadrilla_01();
+
+	// Implementar Nave Enmiga Escuadrilla 01
+	ANaveEnemigaEscuadrilla_02* NaveEnemiga02 = DirectorNaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_02();
+	NaveEnemiga02->CaracteristicasNaveEnemigaEscuadrilla_02();
+
+	// Implementar Nave Enmiga Escuadrilla 03
+	ANaveEnemigaEscuadrilla_03* NaveEnemiga03 = DirectorNaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_03();
+	NaveEnemiga03->CaracteristicasNaveEnemigaEscuadrilla_03();
 }
 
 // Called every frame

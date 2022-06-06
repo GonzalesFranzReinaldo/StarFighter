@@ -25,11 +25,11 @@ void ADirectorNaveEscuadrillasBuilder::Tick(float DeltaTime)
 
 }
 
-void ADirectorNaveEscuadrillasBuilder::ConstruirNaveEnemigaEspacial()
+void ADirectorNaveEscuadrillasBuilder::ConstruirNaveEnemigaEscuadrilla_01()
 {
 	if (!NaveEscuadrillasBuilder)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("ConstruirNaveEnemiga(): NaveEscuadrillasBuilder es NULL, asegurese de inicializar correctamente esta clase"));
+		UE_LOG(LogTemp, Warning, TEXT("ConstruirNaveEnemigaEscuadrilla_01(): NaveEscuadrillasBuilder es NULL, inicializar correctamente esta clase"));
 	}
 
 
@@ -39,6 +39,31 @@ void ADirectorNaveEscuadrillasBuilder::ConstruirNaveEnemigaEspacial()
 	NaveEscuadrillasBuilder->BuildSistemaEscudo();
 }
 
+void ADirectorNaveEscuadrillasBuilder::ConstruirNaveEnemigaEscuadrilla_02()
+{
+	if (!NaveEscuadrillasBuilder)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ConstruirNaveEnemigaEscuadrilla_02(): NaveEscuadrillasBuilder es NULL, inicializar correctamente esta clase"));
+	}
+
+	NaveEscuadrillasBuilder->BuildNivelInvasion();
+	NaveEscuadrillasBuilder->BuildNivelDisparo();
+	NaveEscuadrillasBuilder->BuildSistemaEscudo();
+	NaveEscuadrillasBuilder->BuildSistemaMuniciones();
+}
+
+void ADirectorNaveEscuadrillasBuilder::ConstruirNaveEnemigaEscuadrilla_03()
+{
+	if (!NaveEscuadrillasBuilder)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ConstruirNaveEnemigaEscuadrilla_03(): NaveEscuadrillasBuilder es NULL, inicializar correctamente esta clase"));
+	}
+
+	NaveEscuadrillasBuilder->BuildBombardeo();
+	NaveEscuadrillasBuilder->BuildDesaparecer();
+	NaveEscuadrillasBuilder->BuildSistemaCrecer();
+}
+
 void ADirectorNaveEscuadrillasBuilder::SetNaveEscuadrillasBuilder(AActor* Builder)
 {
 	NaveEscuadrillasBuilder = Cast<INaveEscuadrillasBuilder>(Builder);
@@ -46,19 +71,44 @@ void ADirectorNaveEscuadrillasBuilder::SetNaveEscuadrillasBuilder(AActor* Builde
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("invalido ")));
 
-		UE_LOG(LogTemp, Warning, TEXT("ConstruirNaveEnemigaEspacial(): NaveEscuadrillasBuilder es NULL, asegurese de inicializar correctamente esta clase"));
+		UE_LOG(LogTemp, Warning, TEXT("ConstruirNaveEnemigaEscuadrillas(): NaveEscuadrillasBuilder es NULL, inicializar correctamente esta clase"));
 	}
 }
 
-ANaveEnemigaEspacial* ADirectorNaveEscuadrillasBuilder::GetNaveEnemigaEspacial()
+ANaveEnemigaEscuadrilla_01* ADirectorNaveEscuadrillasBuilder::GetNaveEnemigaEscuadrilla_01()
 {
 	if (NaveEscuadrillasBuilder)
 	{
-		return NaveEscuadrillasBuilder->GetNaveEnemigaEspacial();
+		return NaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_01();
 
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("GetNaveEnemigaEspacial(): retorna NULL"));
+	UE_LOG(LogTemp, Warning, TEXT("GetNaveEnemigaEscuadrilla_01(): retorna NULL"));
 	return nullptr;
 }
+
+ANaveEnemigaEscuadrilla_02* ADirectorNaveEscuadrillasBuilder::GetNaveEnemigaEscuadrilla_02()
+{
+	if (NaveEscuadrillasBuilder)
+	{
+		return NaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_02();
+
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("GetNaveEnemigaEscuadrilla_02(): retorna NULL"));
+	return nullptr;
+}
+
+ANaveEnemigaEscuadrilla_03* ADirectorNaveEscuadrillasBuilder::GetNaveEnemigaEscuadrilla_03()
+{
+	if (NaveEscuadrillasBuilder)
+	{
+		return NaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_03();
+
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("GetNaveEnemigaEscuadrilla_03(): retorna NULL"));
+	return nullptr;
+}
+
 

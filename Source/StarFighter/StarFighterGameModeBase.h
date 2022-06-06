@@ -21,9 +21,10 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
+	UPROPERTY(VisibleAnywhere, Category = "Implementar Caza builder")
 		class ANaveEscuadrillasCazaBuilder* NaveEscuadrillasCazaBuilder;
 
-	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
-		class ADirectorNaveEscuadrillasBuilder* Director;
+	UPROPERTY(VisibleAnywhere, Category = "Implementar Director builder")
+		class ADirectorNaveEscuadrillasBuilder* DirectorNaveEscuadrillasBuilder;
+
 };

@@ -2,6 +2,7 @@
 
 
 #include "Nave.h"
+#include "Materials/Material.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/CollisionProfile.h"
 #include "UObject/ConstructorHelpers.h"

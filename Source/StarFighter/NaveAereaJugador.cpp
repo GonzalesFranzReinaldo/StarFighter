@@ -8,6 +8,7 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
+
 // N: 8 declarar las clase de mover Moveforward y right en naveAereajugador
 const FName ANaveAereaJugador::MoveForwardBinding("MoveForward");
 const FName ANaveAereaJugador::MoveRightBinding("MoveRight");

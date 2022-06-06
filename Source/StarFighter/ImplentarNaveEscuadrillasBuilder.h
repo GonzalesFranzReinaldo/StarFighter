@@ -16,10 +16,10 @@ public:
 	AImplentarNaveEscuadrillasBuilder();
 
 private:
-	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
+	UPROPERTY(VisibleAnywhere, Category = "Implementar Caza builder")
 		class ANaveEscuadrillasCazaBuilder* NaveEscuadrillasCazaBuilder;
 
-	UPROPERTY(VisibleAnywhere, Category = "Implementar builder")
+	UPROPERTY(VisibleAnywhere, Category = "Implementar Director builder")
 		class ADirectorNaveEscuadrillasBuilder* DirectorNaveEscuadrillasBuilder;
 
 protected:
