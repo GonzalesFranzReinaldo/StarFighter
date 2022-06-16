@@ -49,11 +49,11 @@ ANaveAereaJugador::ANaveAereaJugador()
 	CurrentInventory = CreateDefaultSubobject<UMyInventoryComponent>("MyInventory");
 
 	//Ship Info
-	ShipInfo.Add("IncrementarVida", 80);
+	/*ShipInfo.Add("IncrementarVida", 80);
 	ShipInfo.Add("DecrementarVida", 80);
 	ShipInfo.Add("IncrementarVelocidad", 0);
 	ShipInfo.Add("DecrementarVelocidad", 0);
-	ShipInfo.Add("Proyectil", 0);
+	ShipInfo.Add("Proyectil", 0);*/
 
 }
 

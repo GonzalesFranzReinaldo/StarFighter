@@ -3,29 +3,25 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "NaveAerea.h"
-#include "NaveAereaEnemigoNodriza.generated.h"
+#include "GameFramework/Actor.h"
+#include "AddBillboardComp.generated.h"
 
-/**
- * 
- */
 UCLASS()
-class STARFIGHTER_API ANaveAereaEnemigoNodriza : public ANaveAerea
+class STARFIGHTER_API AAddBillboardComp : public AActor
 {
 	GENERATED_BODY()
-
+	
 private:
-
-	ANaveAereaEnemigoNodriza();
 
 	uint32 bCanFire : 1;
 	FTimerHandle TimerHandle_ShotTimerExpired;
 
-	//The mother enemy airship of this Actor
-	// Aqui declaramos la instancia de esta clase
-	UPROPERTY()
-		ANaveAereaEnemigoNodriza* Instance;
-	
+public:
+	// Sets default values for this actor's properties
+	AAddBillboardComp();
+
+	FTimerHandle MemberTimerHandle;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -33,25 +29,22 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	
-	FTimerHandle MemberTimerHandle;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
 		FVector GunOffset;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
-		float FireRate; 
+		float FireRate;
 
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
-		float SpeedScale;
+	UPROPERTY(VisibleAnywhere)
+		class UBillboardComponent* MyBillboardComp;
 
-public:
+	float RunningTime;
 
 	void FireEnemigo();
-	void FireShot(FVector FireDirection);
+	void FireShotEnemigo(FVector FireDirectionEnemigo);
 	void ShotTimerExpired();
 
-	float MovingX;
-	float MovingY;
-	
+	/*float MovingTX;
+	float MovingTY;*/
 };

@@ -8,17 +8,44 @@
 #include "NaveEscuadrillasCazaBuilder.h"
 #include "DirectorNaveEscuadrillasBuilder.h"
 
+#include "GeneradorCapsulas.h"
+#include "Capsula.h"
+#include "GeneradorCapsulasArmas.h"
+#include "GeneradorCapsulasEnergia.h"
+
 
 AStarFighterGameModeBase::AStarFighterGameModeBase()
 {
 
 }
 
+
 void AStarFighterGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UWorld* const World = GetWorld();
+	//SpawnCapsulas();
+
+	AGeneradorCapsulas* GeneradorArmas = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
+	ACapsula* capsula = GeneradorArmas->GetCapsula("Arma1");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Frabrica Capsula %s"), *capsula->GetNombre()));
+
+	//Create the Shops
+	AGeneradorCapsulas* GeneradorCapsulaEscudo = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
+	ACapsula* Capsula = GeneradorCapsulaEscudo->GetCapsula("Escudo1");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Turquoise, FString::Printf(TEXT("Capsula generada %s"), *Capsula->GetNombre()));
+
+	//Create the Shops
+	AGeneradorCapsulas* GeneradorCapsulaEnergia = GetWorld()->SpawnActor<AGeneradorCapsulasEnergia>(AGeneradorCapsulasEnergia::StaticClass());
+	ACapsula* Capsula1 = GeneradorCapsulaEnergia->GetCapsula("Energia1");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("Capsula generada %s"), *Capsula1->GetNombre()));
+
+	//Create the Shops
+	AGeneradorCapsulas* GeneradorCapsulaVida = GetWorld()->SpawnActor<AGeneradorCapsulasEnergia>(AGeneradorCapsulasEnergia::StaticClass());
+	ACapsula* Capsula2 = GeneradorCapsulaVida->GetCapsula("Vida1");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue,FString::Printf(TEXT("Capsula generada %s"), *Capsula2->GetNombre()));
+
+	/*UWorld* const World = GetWorld();
 
 	//Spawn Builder and Engineer
     NaveEscuadrillasCazaBuilder = GetWorld()->SpawnActor<ANaveEscuadrillasCazaBuilder>(ANaveEscuadrillasCazaBuilder::StaticClass());
@@ -39,9 +66,15 @@ void AStarFighterGameModeBase::BeginPlay()
 	NaveEnemiga02->CaracteristicasNaveEnemigaEscuadrilla_02();
 
 	ANaveEnemigaEscuadrilla_03* NaveEnemiga03 = DirectorNaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_03();
-	NaveEnemiga03->CaracteristicasNaveEnemigaEscuadrilla_03();
+	NaveEnemiga03->CaracteristicasNaveEnemigaEscuadrilla_03();*/
 
 	//ANaveEnemigaEscuadrilla_01 = GetWorld()->SpawnActor<ANaveEnemigaEscuadrilla_01>(ANaveEnemigaEscuadrilla_01::StaticClass());
 	//ANaveEnemigaEscuadrilla_01->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
+void AStarFighterGameModeBase::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+
+}

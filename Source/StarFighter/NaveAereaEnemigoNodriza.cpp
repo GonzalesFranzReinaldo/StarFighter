@@ -9,7 +9,7 @@
 ANaveAereaEnemigoNodriza::ANaveAereaEnemigoNodriza()
 {
 		//Search for existing Instances of this class
-		//Buscar Instancias existentes de esta clase
+		//Buscar Instancias existentes de esta clase creando en un array
 		TArray<AActor*> Instances;
 
 		UGameplayStatics::GetAllActorsOfClass(GetWorld(), ANaveAereaEnemigoNodriza::StaticClass(), Instances);
@@ -46,8 +46,6 @@ void ANaveAereaEnemigoNodriza::BeginPlay()
 
 void ANaveAereaEnemigoNodriza::Tick(float DeltaSeconds)
 {
-	Super::Tick(DeltaSeconds);
-
 	Super::Tick(DeltaSeconds);
 
 	srand(time(NULL));
@@ -95,11 +93,13 @@ void ANaveAereaEnemigoNodriza::FireShot(FVector FireDirection)
 				World->SpawnActor<AProyectil>(SpawnLocation + FVector(-50, 50, 0), FireRotation);
 				World->SpawnActor<AProyectil>(SpawnLocation + FVector(100, -100, 0), FireRotation);
 				World->SpawnActor<AProyectil>(SpawnLocation + FVector(-100, 100, 0), FireRotation);
+
+				bCanFire = false;
+				World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ANaveAereaEnemigoNodriza::ShotTimerExpired, FireRate);
 			}
 
-			bCanFire = false;
-			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ANaveAereaEnemigoNodriza::ShotTimerExpired, FireRate);
-
+			//bCanFire = false;
+			//World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ANaveAereaEnemigoNodriza::ShotTimerExpired, FireRate);
 
 		}
 	}

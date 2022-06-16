@@ -15,16 +15,21 @@ class STARFIGHTER_API AStarFighterGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 
-protected:
+public:
 	AStarFighterGameModeBase();
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+protected:
 
 	virtual void BeginPlay() override;
 
-private:
+/*private:
 	UPROPERTY(VisibleAnywhere, Category = "Implementar Caza builder")
 		class ANaveEscuadrillasCazaBuilder* NaveEscuadrillasCazaBuilder;
 
 	UPROPERTY(VisibleAnywhere, Category = "Implementar Director builder")
-		class ADirectorNaveEscuadrillasBuilder* DirectorNaveEscuadrillasBuilder;
+		class ADirectorNaveEscuadrillasBuilder* DirectorNaveEscuadrillasBuilder;*/
 
 };
