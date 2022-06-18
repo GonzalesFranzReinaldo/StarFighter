@@ -13,8 +13,6 @@ AAddBillboardComp::AAddBillboardComp()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//SoundWave'/Game/TwinStick/Audio/TwinStickFire.TwinStickFire'
-
 	MyBillboardComp = CreateDefaultSubobject<UBillboardComponent>(TEXT("My Billboard"));
 	MyBillboardComp->SetHiddenInGame(false, true);
 	RootComponent = MyBillboardComp;

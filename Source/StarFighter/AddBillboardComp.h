@@ -44,7 +44,4 @@ public:
 	void FireEnemigo();
 	void FireShotEnemigo(FVector FireDirectionEnemigo);
 	void ShotTimerExpired();
-
-	/*float MovingTX;
-	float MovingTY;*/
 };
