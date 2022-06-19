@@ -21,7 +21,7 @@ ANaveAereaEnemigoNodriza::ANaveAereaEnemigoNodriza()
 			Instance = Cast<ANaveAereaEnemigoNodriza>(Instances[0]);
 
 			//Agregar mensaje de depuración en pantalla                                         ya existe
-			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%s already exists"),*Instance->GetName()));
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Orange, FString::Printf(TEXT("%s already exists"),*Instance->GetName()));
 			
 			//Then Destroy this Actor
 			//Entonces destruye a este actor

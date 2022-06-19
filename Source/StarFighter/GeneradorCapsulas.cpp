@@ -21,7 +21,7 @@ void AGeneradorCapsulas::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	GetWorldTimerManager().SetTimer(MemberTimerHandle, this, &AGeneradorCapsulas::repetir, 20.0f, true, 5.0f);
+	GetWorldTimerManager().SetTimer(MemberTimerHandle, this, &AGeneradorCapsulas::repetir, 30.0f, true, 5.0f);
 }
 
 // Called every frame

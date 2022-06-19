@@ -61,7 +61,7 @@ void ACapsula::Tick(float DeltaTime)
 
 void ACapsula::Generar()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Generando las capsulas %s"), *GetNombre()));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, FString::Printf(TEXT("Generando las capsulas %s"), *GetNombre()));
 }
 
 void ACapsula::Cargar()
@@ -71,12 +71,12 @@ void ACapsula::Cargar()
 
 void ACapsula::Desplegar()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Se estan desplegando las capsulas")));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Black, FString::Printf(TEXT("Se estan desplegando las capsulas")));
 }
 
 void ACapsula::Destruir()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Las capsulas se estan destruyendo")));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Green, FString::Printf(TEXT("Las capsulas se estan destruyendo")));
 }
 
 void ACapsula::TimerExpired()

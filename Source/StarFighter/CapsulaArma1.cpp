@@ -18,5 +18,5 @@ void ACapsulaArma1::BeginPlay()
 
 void ACapsulaArma1::Generar()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Generando una capsula de Arma 1"));
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Generando una capsula de Arma 1"));
 }

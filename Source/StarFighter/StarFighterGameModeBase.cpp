@@ -12,6 +12,8 @@
 #include "Capsula.h"
 #include "GeneradorCapsulasArmas.h"
 #include "GeneradorCapsulasEnergia.h"
+#include "NaveEspacial.h"
+#include "NaveEnemigaEspacial.h"
 
 
 AStarFighterGameModeBase::AStarFighterGameModeBase()
@@ -23,6 +25,8 @@ AStarFighterGameModeBase::AStarFighterGameModeBase()
 void AStarFighterGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SpawnNaveEnemigaEspacial();
 
 	//SpawnCapsulas();
 
@@ -72,9 +76,20 @@ void AStarFighterGameModeBase::BeginPlay()
 	//ANaveEnemigaEscuadrilla_01->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
+void AStarFighterGameModeBase::SpawnNaveEnemigaEspacial()
+{
+
+	UWorld* const World = GetWorld();
+	World->SpawnActor<ANaveEnemigaEspacial>(FVector(400.0f, -400.0f, 200), FRotator::ZeroRotator);
+}
+
 void AStarFighterGameModeBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-
+	UE_LOG(LogTemp, Warning, TEXT("Creando Enemiga Nave Espacial"));
+	float newX = rand() % 100 + 1;
+	float newY = rand() % 100 + 1;
+	UWorld* const World = GetWorld();
+	World->SpawnActor<ANaveEnemigaEspacial>(FVector(newX, newY, 200), FRotator::ZeroRotator);
 }

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "NaveEspacial.h"
 #include "StarFighterGameModeBase.generated.h"
 
 
@@ -18,8 +19,15 @@ class STARFIGHTER_API AStarFighterGameModeBase : public AGameModeBase
 public:
 	AStarFighterGameModeBase();
 
+	INaveEspacial* NaveEnemigaEspacial;
+
+	void SpawnNaveEnemigaEspacial();
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	template<typename T>
+	T SpawnNave();
 
 protected:
 
@@ -33,3 +41,9 @@ protected:
 		class ADirectorNaveEscuadrillasBuilder* DirectorNaveEscuadrillasBuilder;*/
 
 };
+
+template<typename T>
+inline T AStarFighterGameModeBase::SpawnNave()
+{
+	return GetWorld()->SpawnActor<T>(FVector::ZeroVector, FRotator::ZeroRotator);
+}
