@@ -104,8 +104,6 @@ void AStarFighterGameModeBase::BeginPlay()
 	ANaveEnemigaEscuadrilla_03* NaveEnemiga03 = DirectorNaveEscuadrillasBuilder->GetNaveEnemigaEscuadrilla_03();
 	NaveEnemiga03->CaracteristicasNaveEnemigaEscuadrilla_03();*/
 
-	//ANaveEnemigaEscuadrilla_01 = GetWorld()->SpawnActor<ANaveEnemigaEscuadrilla_01>(ANaveEnemigaEscuadrilla_01::StaticClass());
-	//ANaveEnemigaEscuadrilla_01->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
 void AStarFighterGameModeBase::SpawnNave()
