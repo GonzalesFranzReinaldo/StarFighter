@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "NaveAerea.h"
 #include "MyInventoryComponent.h"
+#include "TowerVigilance.h"
+#include "NaveEnemigo.h" // FreakyAllen
 #include "NaveAereaJugador.generated.h"
 
 /**
@@ -14,7 +16,7 @@ UCLASS()
 class STARFIGHTER_API ANaveAereaJugador : public ANaveAerea
 {
 	GENERATED_BODY()
-	// N: 1 La Camara solo se chata en La nave jugador
+	
 	/** The camera */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComponent;
@@ -23,13 +25,16 @@ class STARFIGHTER_API ANaveAereaJugador : public ANaveAerea
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 		class USpringArmComponent* CameraBoom;
 
-	float Vida;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Datos", meta = (AllowPrivateAccess = "true")) 
+		FString NaveActorName;
 
-// N: 5  son metodos para que la nave vea la manera de manejarse 
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 public:
 	ANaveAereaJugador(); 
 
-	//N:14 declaramos la funcion de las entradas del setupPlayerInputComponent  n  
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -78,10 +83,6 @@ public:
 	UFUNCTION()
 		void DecrementarVelocidad();
 
-	// Static names for axis bindings
-	static const FName MoveForwardBinding;
-	static const FName MoveRightBinding;
-
 	/** Returns CameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetCameraComponent() const { return CameraComponent; }
 	/** Returns CameraBoom subobject **/
@@ -97,4 +98,13 @@ private:
 
 	float FireForwardValue;
 	float FireRightValue;
-};
+
+	float Vida;
+
+	ATowerVigilance* TowerVigilance;
+
+	ANaveEnemigo* NaveEnemigo1;
+	ANaveEnemigo* NaveEnemigo2;
+	ANaveEnemigo* NaveEnemigo3;
+
+}; 

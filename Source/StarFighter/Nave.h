@@ -11,7 +11,7 @@ UCLASS()
 class STARFIGHTER_API ANave : public APawn
 {
 	GENERATED_BODY()
-	// N: 2	 UstaticMeshComponent es para todos los objetos que van a heredar de la clase padre  
+	
 	/* The mesh component */
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 		class UStaticMeshComponent* ShipMeshComponent;
@@ -19,7 +19,7 @@ class STARFIGHTER_API ANave : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ANave();
-	// N:3 Para moverse a una velocidad donde todos heredan del padre
+	
 	/* The speed our ship moves around the level */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	float MoveSpeed;
@@ -27,7 +27,6 @@ public:
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 		class USoundBase* FireSound;
 
-	// N:4 Energia donde todos los objetos deben tener que van a heredar
 	/* The energy ship */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	float Energy;

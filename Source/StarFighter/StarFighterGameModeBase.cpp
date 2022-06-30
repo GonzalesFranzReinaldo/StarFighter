@@ -7,6 +7,7 @@
 #include "NaveEnemigaEscuadrilla_03.h"
 #include "NaveEscuadrillasCazaBuilder.h"
 #include "DirectorNaveEscuadrillasBuilder.h"
+#include "NaveAereaEnemigoNodriza.h"
 
 #include "GeneradorCapsulas.h"
 #include "Capsula.h"
@@ -14,6 +15,13 @@
 #include "GeneradorCapsulasEnergia.h"
 #include "NaveEspacial.h"
 #include "NaveEnemigaEspacial.h"
+#include "Singleton.h"
+
+#include "TowerVigilance.h"
+#include "NaveEnemigo.h"
+#include "NaveAcuatico.h"
+
+
 
 
 AStarFighterGameModeBase::AStarFighterGameModeBase()
@@ -26,11 +34,32 @@ void AStarFighterGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
+	UWorld* const World = GetWorld();
+
+	//SpawnNave();
+
 	SpawnNaveEnemigaEspacial();
+
+	//Spawn the Clock Tower
+	//ATowerVigilance* TowerVigilance = GetWorld()->SpawnActor<ATowerVigilance>(ATowerVigilance::StaticClass());
+
+	//Spawn the first Subscriber and set its Clock Tower
+	//ANaveEnemigo* NaveEnemigo = GetWorld()->SpawnActor<ANaveEnemigo>(ANaveEnemigo::StaticClass());
+
+	//NaveEnemigo->SetTowerVigilance(TowerVigilance);
+
+	//Change the time of the Clock Tower, so the Subscribers can execute their own routine
+
+	//TowerVigilance->SetStatusShipEnemi("Enemigo Escapando ");
+	//TowerVigilance->SetStatusShipEnemi("NaveAereaJugador Estatico");
+	//TowerVigilance->SetStatusShipEnemi("Enemigo Atacando ");
+	//TowerVigilance->SetStatusShipEnemi("Enemigo Estatico ");
+
+
 
 	//SpawnCapsulas();
 
-	AGeneradorCapsulas* GeneradorArmas = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
+	/*AGeneradorCapsulas* GeneradorArmas = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
 	ACapsula* capsula = GeneradorArmas->GetCapsula("Arma1");
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Frabrica Capsula %s"), *capsula->GetNombre()));
 
@@ -47,7 +76,10 @@ void AStarFighterGameModeBase::BeginPlay()
 	//Create the Shops
 	AGeneradorCapsulas* GeneradorCapsulaVida = GetWorld()->SpawnActor<AGeneradorCapsulasEnergia>(AGeneradorCapsulasEnergia::StaticClass());
 	ACapsula* Capsula2 = GeneradorCapsulaVida->GetCapsula("Vida1");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue,FString::Printf(TEXT("Capsula generada %s"), *Capsula2->GetNombre()));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue,FString::Printf(TEXT("Capsula generada %s"), *Capsula2->GetNombre()));*/
+
+
+
 
 	/*UWorld* const World = GetWorld();
 
@@ -76,6 +108,20 @@ void AStarFighterGameModeBase::BeginPlay()
 	//ANaveEnemigaEscuadrilla_01->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
+void AStarFighterGameModeBase::SpawnNave()
+{
+
+	UE_LOG(LogTemp, Warning, TEXT("Se creo una NaveAcuatico"));
+	UWorld* const World = GetWorld();
+
+
+	ejeX = rand() % 2000 + 1;
+	ejeY = rand() % 2000 + 1;
+
+	World->SpawnActor<ANaveAcuatico>(FVector(ejeX, ejeY, 112.0f), FRotator::ZeroRotator);
+
+}
+
 void AStarFighterGameModeBase::SpawnNaveEnemigaEspacial()
 {
 
@@ -87,9 +133,10 @@ void AStarFighterGameModeBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	UE_LOG(LogTemp, Warning, TEXT("Creando Enemiga Nave Espacial"));
+	/*UE_LOG(LogTemp, Warning, TEXT("Creando Enemiga Nave Acuatico"));
 	float newX = rand() % 100 + 1;
 	float newY = rand() % 100 + 1;
 	UWorld* const World = GetWorld();
-	World->SpawnActor<ANaveEnemigaEspacial>(FVector(newX, newY, 200), FRotator::ZeroRotator);
+	World->SpawnActor<ANaveEnemigaEspacial>(FVector(newX, newY, 200), FRotator::ZeroRotator);*/
+
 }

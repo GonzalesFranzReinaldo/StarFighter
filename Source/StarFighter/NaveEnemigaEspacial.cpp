@@ -63,7 +63,7 @@ void ANaveEnemigaEspacial::FireRifleShooter()
 	FireShotEnemigo(FireDirectionEnemigo);
 
 	//Print Fire log
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Green, TEXT("Nave Enemiga Espacial esta fusilando"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Green, TEXT("Nave Enemiga Espacial esta fusilando"));
 }
 
 void ANaveEnemigaEspacial::GetEntangle()

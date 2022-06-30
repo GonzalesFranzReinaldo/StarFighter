@@ -17,7 +17,7 @@ ANave::ANave()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	//N:9 esta me crea un objeto de tip mesh para endozar directo ala malla saca su direccion
+	
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 
 	// Create the mesh component
@@ -25,12 +25,10 @@ ANave::ANave()
 	RootComponent = ShipMeshComponent;
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
-	// N:12 creamos la velocidad de movimiento y las energias en el padre que va a heredar sus hijas
-	// Movement
-	MoveSpeed = 1000.0f;
+	
+	//MoveSpeed = 1000.0f;
 
-	//Energy
-	Energy = 100.0f;
+	//Energy = 100.0f;
 
 }
 

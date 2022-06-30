@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "NaveAcuatico.h"
-#include "NaveAereaJugador.h"
 #include "EnemigoAcuatico1.generated.h"
 
 /**
@@ -15,7 +14,7 @@ class STARFIGHTER_API AEnemigoAcuatico1 : public ANaveAcuatico
 {
 	GENERATED_BODY()
 
-private:
+/*private:
 	AEnemigoAcuatico1();
 
 	uint32 bCanFire : 1;
@@ -24,6 +23,7 @@ private:
 public:
 
 	FTimerHandle MemberTimerHandle;
+	FTimerHandle MemberTimerHandle1;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
 		FVector GunOffset;// ES para ver en que distancia aparece el Proyectil
@@ -32,8 +32,12 @@ public:
 		float FireRate; //propiedad que hace que cuanto tiempo desaparece el proyectil
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
-		float Speed;
+		float MoveSpeedNaveAcuatica;
 
+	float MovingTX; 
+	float MovingTY;
+
+public:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -42,10 +46,6 @@ public:
 
 	void FireEnemigo();
 	void FireShotEnemigo(FVector FireDirectionEnemigo);
-	void ShotTimerExpired();
+	void ShotTimerExpired();*/
 
-	/**UPROPERTY(Editanywhere)
-		float SpeedScale;
-
-	float RunningTime;*/
 };

@@ -18,13 +18,16 @@ private:
 
 	ANaveAereaEnemigoNodriza();
 
-	uint32 bCanFire : 1;
-	FTimerHandle TimerHandle_ShotTimerExpired;
+public:
 
-	//The mother enemy airship of this Actor
 	// Aqui declaramos la instancia de esta clase
 	UPROPERTY()
 		ANaveAereaEnemigoNodriza* Instance;
+
+	uint32 bCanFire : 1;
+	FTimerHandle TimerHandle_ShotTimerExpired;
+	FTimerHandle MemberTimerHandle;
+	FTimerHandle MemberTimerHandle1;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -34,8 +37,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
-	FTimerHandle MemberTimerHandle;
-
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
 		FVector GunOffset;
 
@@ -43,15 +44,16 @@ public:
 		float FireRate; 
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
-		float SpeedScale;
+		float MoveSpeedNaveNodriza;
+
+	float MovingTX;
+	float MovingTY;
+
 
 public:
 
 	void FireEnemigo();
 	void FireShot(FVector FireDirection);
 	void ShotTimerExpired();
-
-	float MovingX;
-	float MovingY;
 	
 };

@@ -7,11 +7,9 @@
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
-
-// N: 8 declarar las clase de mover Moveforward y right en naveAereajugador
-const FName ANaveAereaJugador::MoveForwardBinding("MoveForward");
-const FName ANaveAereaJugador::MoveRightBinding("MoveRight");
+#include "NaveEnemigo.h"
 
 ANaveAereaJugador::ANaveAereaJugador()
 {
@@ -19,7 +17,6 @@ ANaveAereaJugador::ANaveAereaJugador()
 	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
 	FireSound = FireAudio.Object;
 
-	//N:10 creamos la camara para el navejugador en su constructor
 	// Create a camera boom...
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
@@ -40,7 +37,7 @@ ANaveAereaJugador::ANaveAereaJugador()
 	FireRate = 0.1f;
 	bCanFire = true;
 
-	FireForwardValue = 0.0f;
+	FireForwardValue = 1.0f;
 	FireRightValue = 0.0f;
 
 	Vida = 80;
@@ -71,7 +68,23 @@ void ANaveAereaJugador::SetupPlayerInputComponent(class UInputComponent* PlayerI
 	InputComponent->BindAction(TEXT("Test"), IE_Pressed, this, &ANaveAereaJugador::Test);
 	InputComponent->BindAction(TEXT("IncrementarVelocidad"), IE_Pressed, this, &ANaveAereaJugador::IncrementarVelocidad);
 	InputComponent->BindAction(TEXT("DecrementarVelocidad"), IE_Pressed, this, &ANaveAereaJugador::DecrementarVelocidad);
-	//InputComponent->BindAction(TEXT("Mojora_Empeora_Proyectil"), IE_Pressed, this, &ANaveAereaJugador::Mojora_Empeora_Proyectil);
+}
+
+void ANaveAereaJugador::BeginPlay()
+{
+	Super::BeginPlay();
+
+	TowerVigilance = GetWorld()->SpawnActor<ATowerVigilance>(ATowerVigilance::StaticClass());
+
+	NaveEnemigo1 = GetWorld()->SpawnActor<ANaveEnemigo>(FVector(150.0f, 250.0f, 100.0f), FRotator::ZeroRotator);
+	NaveEnemigo2 = GetWorld()->SpawnActor<ANaveEnemigo>(FVector(-300.0f, -400.0f, 100.0f), FRotator::ZeroRotator);
+	NaveEnemigo3 = GetWorld()->SpawnActor<ANaveEnemigo>(FVector(-300.0f, 500.0f, 100.0f), FRotator::ZeroRotator);
+
+	NaveEnemigo1 -> SetTowerVigilance(TowerVigilance);
+	NaveEnemigo2->SetTowerVigilance(TowerVigilance);
+	NaveEnemigo3->SetTowerVigilance(TowerVigilance);
+
+	TowerVigilance->SetStatusShipEnemi("NaveAereaJugador Estatico");
 }
 
 void ANaveAereaJugador::Tick(float DeltaSeconds)
@@ -82,9 +95,11 @@ void ANaveAereaJugador::Tick(float DeltaSeconds)
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
 
 	if (ForwardValue != 0.0f || RightValue != 0.0f) {
+
 		if (ForwardValue != FireForwardValue) {
 			FireForwardValue = ForwardValue;
 		}
+
 		if (RightValue != FireRightValue) {
 			FireRightValue = RightValue;
 		}
@@ -103,7 +118,27 @@ void ANaveAereaJugador::Tick(float DeltaSeconds)
 		FHitResult Hit(1.f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
 
+		if (Hit.IsValidBlockingHit())
+		{
+			const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
+			const FVector Deflection = FVector::VectorPlaneProject(Movement, Normal2D) * (1.f - Hit.Time);
+			RootComponent->MoveComponent(Deflection, NewRotation, true);
+		}
 	}
+
+	if (ForwardValue != 0.0f || RightValue != 0.0f)
+	{
+
+		TowerVigilance->SetStatusShipEnemi("NaveAereaJugador en Movimiento");
+		
+	}
+
+	/*if (ForwardValue == 0.0f || RightValue == 0.0f)
+	{
+
+		TowerVigilance->SetStatusShipEnemi("NaveAereaJugador Estatico");
+		
+	}*/
 }
 
 void ANaveAereaJugador::IncrementarVelocidad()
@@ -144,7 +179,11 @@ void ANaveAereaJugador::DecrementarVelocidad()
 	}
 }
 
-void ANaveAereaJugador::Fire() {
+void ANaveAereaJugador::Fire() 
+{
+	
+	TowerVigilance->SetStatusShipEnemi("NaveAereaJugador Atacando");
+	
 	bCanFire = true;
 
 	const FVector FireDirection = FVector(FireForwardValue, FireRightValue, 0.0f).GetClampedToMaxSize(1.0f);
@@ -158,32 +197,34 @@ void ::ANaveAereaJugador::FireShot(FVector FireDirection)
 	// If it's ok to fire again
 	if (bCanFire == true)
 	{
-		// If we are pressing fire stick in a direction
-		if (FireDirection.SizeSquared() > 0.0f)
-		{
-			const FRotator FireRotation = FireDirection.Rotation();
-			// Spawn projectile at an offset from this pawn
-			const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+		const FRotator FireRotation = FireDirection.Rotation();
+		// Spawn projectile at an offset from this pawn
+		const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
 
-			UWorld* const World = GetWorld();
-			if (World != nullptr)
-			{
-				// spawn the projectile
-				World->SpawnActor<AProyectil>(SpawnLocation, FireRotation);
-			}
+		UWorld* const World = GetWorld();
+		if (World != nullptr)
+		{
+			// spawn the projectile
+			World->SpawnActor<AProyectil>(SpawnLocation, FireRotation);
 
 			bCanFire = false;
 			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ANaveAereaJugador::ShotTimerExpired, FireRate);
-
-			// try and play the sound if specified
-			if (FireSound != nullptr)
-			{
-				UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-
-			}
-
-			bCanFire = false;
 		}
+
+		// try and play the sound if specified
+		if (FireSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+
+		}
+
+		bCanFire = false;
+
+		// If we are pressing fire stick in a direction
+		/*if (FireDirection.SizeSquared() > 0.0f)
+		{
+			
+		}*/
 	}
 }
 
@@ -263,7 +304,8 @@ void ANaveAereaJugador::Test()
 
 }
 
-void ANaveAereaJugador::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+void ANaveAereaJugador::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, 
+	FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {
 	for (auto& Elem : ShipInfo) {
 		GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%s = %d"), *Elem.Key, Elem.Value));

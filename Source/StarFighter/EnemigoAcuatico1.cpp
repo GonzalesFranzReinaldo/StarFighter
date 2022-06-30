@@ -2,14 +2,17 @@
 
 
 #include "EnemigoAcuatico1.h"
+/*#include "NaveAereaJugador.h"
 #include "Proyectil.h"
 #include "NaveAereaJugador.h"
+#include "StarFighterGameModeBase.h"
+#include "NaveAereaEnemigoNodriza.h"
 #include "Kismet/GameplayStatics.h"
 
 AEnemigoAcuatico1::AEnemigoAcuatico1()
 {
 	//SpeedScale = 0.0f;
-	MoveSpeed = 1000.0f;
+	MoveSpeedNaveAcuatica = 50.0f;
 
 	MovingTX = 0.0f;
 	MovingTY = 0.0f;
@@ -36,10 +39,10 @@ void AEnemigoAcuatico1::Tick(float DeltaSeconds)
 	MovingTX = rand() % 20 - 10;
 	MovingTY = rand() % 20 - 10;
 
-	MoveSpeed = 20;
+	//MoveSpeedNaveAcuatica = 20;
 
 	const FVector MoveDirection = FVector(MovingTX, MovingTY, 0.0f);
-	const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
+	const FVector Movement = MoveDirection * MoveSpeedNaveAcuatica * DeltaSeconds;
 
 	if (Movement.SizeSquared() > 0.0f)
 	{
@@ -50,7 +53,7 @@ void AEnemigoAcuatico1::Tick(float DeltaSeconds)
 	}
 
 	// basic intel: move the monster towards the player
-	ANaveAereaJugador* avatar = Cast<ANaveAereaJugador>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+	ANaveAereaEnemigoNodriza* avatar = Cast<ANaveAereaEnemigoNodriza>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	if (!avatar)
 	{
 		return;
@@ -63,11 +66,11 @@ void AEnemigoAcuatico1::Tick(float DeltaSeconds)
 	toPlayerRotation.Pitch = 0; // 0 off the pitch
 	RootComponent->SetWorldRotation(toPlayerRotation);
 
-	/**FVector NewLocation = GetActorLocation();
-	float DeltaHeight = (FMath::Cos(RunningTime + DeltaTime) - FMath::Cos(RunningTime));
-	NewLocation.X += DeltaHeight * SpeedScale;
-	RunningTime += DeltaTime;
-	SetActorLocation(NewLocation);*/
+	//FVector NewLocation = GetActorLocation();
+	//float DeltaHeight = (FMath::Cos(RunningTime + DeltaTime) - FMath::Cos(RunningTime));
+	//NewLocation.X += DeltaHeight * SpeedScale;
+	//RunningTime += DeltaTime;
+	//SetActorLocation(NewLocation);
 	
 }
 
@@ -113,4 +116,4 @@ void AEnemigoAcuatico1::FireShotEnemigo(FVector FireDirectionEnemigo)
 void AEnemigoAcuatico1::ShotTimerExpired()
 {
 	bCanFire = true;
-}
+}*/

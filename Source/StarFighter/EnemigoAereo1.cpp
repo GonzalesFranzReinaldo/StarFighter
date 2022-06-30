@@ -93,11 +93,10 @@ void AEnemigoAereo1::FireShotEnemigo(FVector FireDirectionEnemigo)
 			if (World != nullptr)
 			{
 				World->SpawnActor<AProyectil>(SpawnLocation, FireRotation);
+
+				bCanFire = false;
+				World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AEnemigoAereo1::ShotTimerExpired, FireRate);
 			}
-
-			bCanFire = false;
-			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AEnemigoAereo1::ShotTimerExpired, FireRate);
-
 
 		}
 	}
