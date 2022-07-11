@@ -27,6 +27,7 @@ void ADecoratorNaves::BeginPlay()
 {
 	Super::BeginPlay();
 	
+
 	TArray<FHitResult> OutHits;
 
 	FVector ActorLocation = GetActorLocation();
@@ -43,7 +44,7 @@ void ADecoratorNaves::BeginPlay()
 		{
 			if (GEngine)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Hit Result: %s"), *Hit.Actor->GetName()));
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Nave Enmallado: %s"), *Hit.Actor->GetName()));
 			}
 		}
 	}
@@ -64,6 +65,7 @@ void ADecoratorNaves::FireRifleShooter()
 void ADecoratorNaves::GetEntangle()
 {
 	this->NaveEnemigaEspacial->GetEntangle();
+
 }
 
 void ADecoratorNaves::Die()

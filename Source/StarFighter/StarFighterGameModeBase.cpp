@@ -21,12 +21,16 @@
 #include "NaveEnemigo.h"
 #include "NaveAcuatico.h"
 
+#include "NaveBatallador.h"
+#include "StrategyDisparo.h"
+#include "StrategyDesplazar.h"
+#include "StrategyCamuflage.h"
 
 
 
 AStarFighterGameModeBase::AStarFighterGameModeBase()
 {
-
+	
 }
 
 
@@ -36,9 +40,38 @@ void AStarFighterGameModeBase::BeginPlay()
 
 	UWorld* const World = GetWorld();
 
-	//SpawnNave();
+	SpawnNave();
 
 	SpawnNaveEnemigaEspacial();
+
+
+	//Enemies alert log
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El NaveJugador quiere problemas asi que disparamos "));
+	////Spawn the Battle Ship
+	//ANaveBatallador* NaveBatallador = GetWorld()->SpawnActor<ANaveBatallador>(ANaveBatallador::StaticClass());
+	////Create the Brute Force Strategy and set it to the Battle Ship
+	//AStrategyDisparo* StrategyDisparo = GetWorld() -> SpawnActor<AStrategyDisparo>(AStrategyDisparo::StaticClass());
+	//NaveBatallador->AlterManeuvers(StrategyDisparo);
+	////Engage with the current Strategy
+	//NaveBatallador->Engage();
+
+	////Enemies alert log
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("El NaveJugador se aleja, entonces nos desplazamos"));
+	////Create the Divide Conquer Strategy and set it to the Battle Ship
+	//AStrategyDesplazar* StrategyDesplazar = GetWorld() -> SpawnActor<AStrategyDesplazar>(AStrategyDesplazar::StaticClass());
+	//NaveBatallador->AlterManeuvers(StrategyDesplazar);
+	////Engage with the current Strategy
+	//NaveBatallador->Engage();
+
+	////Enemies alert log
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("El NaveJugador activo el escudo, Nos Camuflamos"));
+	////Create the Retreat Strategy and set it to the Battle Ship
+	//AStrategyCamuflage* StrategyCamuflage = GetWorld() -> SpawnActor<AStrategyCamuflage>(AStrategyCamuflage::StaticClass());
+	//NaveBatallador->AlterManeuvers(StrategyCamuflage);
+	////Engage with the current Strategy
+	//NaveBatallador->Engage();
+
+
 
 	//Spawn the Clock Tower
 	//ATowerVigilance* TowerVigilance = GetWorld()->SpawnActor<ATowerVigilance>(ATowerVigilance::StaticClass());

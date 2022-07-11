@@ -43,9 +43,9 @@ protected:
 	float ejeX; //daremos valores aleatorios 
 	float ejeY; //daremos valores aleatorios 
 
-	float PejeX;
-	float PejeY;
-	float contador;
+	//float PejeX;
+	//float PejeY;
+	//float contador;
 
 	FTimerHandle AcuaticaTimerHandle;
 	FTimerHandle AcuaticaTimerHandle1;
