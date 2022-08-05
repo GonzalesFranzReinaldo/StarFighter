@@ -55,7 +55,7 @@ public:
 
 	virtual class ANaveEnemigaEscuadrilla_01* GetNaveEnemigaEscuadrilla_01() override;
 
-	// Nave Enemiga Escuadrilla 01
+	// Nave Enemiga Escuadrilla 02
 	virtual void BuildNivelInvasion() override;
 	virtual void BuildNivelDisparo() override;
 	virtual void BuildSistemaGravedad() override;

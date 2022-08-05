@@ -36,6 +36,7 @@ public:
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadOnly)
 		float FireRate;
 
+	// Propiedad de clase
 	UPROPERTY(VisibleAnywhere)
 		class UBillboardComponent* MyBillboardComp;
 

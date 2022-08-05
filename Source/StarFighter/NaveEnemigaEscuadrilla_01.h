@@ -16,7 +16,7 @@ class STARFIGHTER_API ANaveEnemigaEscuadrilla_01 : public ANave
 
 private:
 
-	// Estos se convertiran en clases
+	// Estos se convertiran en clases o metodos funciones
 	FString Velocidad_Movimiento;
 	FString Resistencia_Vida;
 	FString SistemaRotacion;

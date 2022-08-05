@@ -19,5 +19,5 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	virtual void Generar() override;
+virtual void Generar() override;  // Solo declaramos la funcion a generar
 };

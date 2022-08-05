@@ -92,24 +92,24 @@ void AStarFighterGameModeBase::BeginPlay()
 
 	//SpawnCapsulas();
 
-	/*AGeneradorCapsulas* GeneradorArmas = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
-	ACapsula* capsula = GeneradorArmas->GetCapsula("Arma1");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Frabrica Capsula %s"), *capsula->GetNombre()));
+	//AGeneradorCapsulas* GeneradorArmas = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
+	//ACapsula* capsula = GeneradorArmas->GetCapsula("Arma1");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Frabrica Capsula %s"), *capsula->GetNombre()));
 
-	//Create the Shops
-	AGeneradorCapsulas* GeneradorCapsulaEscudo = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
-	ACapsula* Capsula = GeneradorCapsulaEscudo->GetCapsula("Escudo1");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Turquoise, FString::Printf(TEXT("Capsula generada %s"), *Capsula->GetNombre()));
+	////Create the Shops
+	//AGeneradorCapsulas* GeneradorCapsulaEscudo = GetWorld()->SpawnActor<AGeneradorCapsulasArmas>(AGeneradorCapsulasArmas::StaticClass());
+	//ACapsula* Capsula = GeneradorCapsulaEscudo->GetCapsula("Escudo1");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Turquoise, FString::Printf(TEXT("Capsula generada %s"), *Capsula->GetNombre()));
 
-	//Create the Shops
-	AGeneradorCapsulas* GeneradorCapsulaEnergia = GetWorld()->SpawnActor<AGeneradorCapsulasEnergia>(AGeneradorCapsulasEnergia::StaticClass());
-	ACapsula* Capsula1 = GeneradorCapsulaEnergia->GetCapsula("Energia1");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("Capsula generada %s"), *Capsula1->GetNombre()));
+	////Create the Shops
+	//AGeneradorCapsulas* GeneradorCapsulaEnergia = GetWorld()->SpawnActor<AGeneradorCapsulasEnergia>(AGeneradorCapsulasEnergia::StaticClass());
+	//ACapsula* Capsula1 = GeneradorCapsulaEnergia->GetCapsula("Energia1");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("Capsula generada %s"), *Capsula1->GetNombre()));
 
-	//Create the Shops
-	AGeneradorCapsulas* GeneradorCapsulaVida = GetWorld()->SpawnActor<AGeneradorCapsulasEnergia>(AGeneradorCapsulasEnergia::StaticClass());
-	ACapsula* Capsula2 = GeneradorCapsulaVida->GetCapsula("Vida1");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue,FString::Printf(TEXT("Capsula generada %s"), *Capsula2->GetNombre()));*/
+	////Create the Shops
+	//AGeneradorCapsulas* GeneradorCapsulaVida = GetWorld()->SpawnActor<AGeneradorCapsulasEnergia>(AGeneradorCapsulasEnergia::StaticClass());
+	//ACapsula* Capsula2 = GeneradorCapsulaVida->GetCapsula("Vida1");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue,FString::Printf(TEXT("Capsula generada %s"), *Capsula2->GetNombre()));
 
 
 

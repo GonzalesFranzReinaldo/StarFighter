@@ -4,14 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "StrategyNave.h"
-#include "StrategyDisparo.h"
-#include "StrategyDesplazar.h"
-#include "StrategyCamuflage.h"
+//#include "StrategyNave.h"
+//#include "StrategyDisparo.h"
+//#include "StrategyDesplazar.h"
+//#include "StrategyCamuflage.h"
 #include "NaveBatallador.generated.h"
 
 UCLASS()
-class STARFIGHTER_API ANaveBatallador : public AActor //, public IStrategyNave
+class STARFIGHTER_API ANaveBatallador : public AActor
 {
 	GENERATED_BODY()
 	
@@ -22,11 +22,16 @@ public:
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 		class UStaticMeshComponent* MeshNaveBatallador;
 
-private:
-	//La Estrategia acutual de la Nave Batallador
-	IStrategyNave* StrategyNave;
+	/* The speed our ship moves around the level */
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+		float MoveSpeedNaveBatallador;  //sera la velocidad usada por una Nave Enemiga
 
-	ANaveBatallador* NaveBatallador;
+private:
+
+	//La Estrategia acutual de la Nave Batallador
+	//IStrategyNave* StrategyNave;
+
+	//ANaveBatallador* NaveBatallador;
 
 protected:
 	// Called when the game starts or when spawned
@@ -36,14 +41,18 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+
+	float MovingAX;
+	float MovingAY;
+
 	// Cambiar la maniobra y establecer la variable "Estrategia Nave"
-	void AlterManeuvers(AActor* myStrategyNave);  // Funcion alternar maniobras
+	//void AlterManeuvers(AActor* myStrategyNave);  // Funcion alternar maniobras
 
 	// Comprometerse con la estrategia de la Nave Batallador
-	void Engage();  // Funcion Comprometerse
+	//void Engage();  // Funcion Comprometerse
 
-public:
-	AStrategyDisparo* StrategyDisparo;
+    //public:
+	/*AStrategyDisparo* StrategyDisparo;
 	AStrategyDesplazar* StrategyDesplazar;
-	AStrategyCamuflage* StrategyCamuflage;
+	AStrategyCamuflage* StrategyCamuflage;*/
 };

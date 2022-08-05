@@ -65,7 +65,7 @@ void ANaveEnemigo::Destroyed()
 void ANaveEnemigo::Update(APublisherObserver* PublisherObserver)
 {
 	//Execute the routine
-	ShipMorph();
+	ShipMorph();  //transformar
 
 }
 
@@ -101,14 +101,14 @@ void ANaveEnemigo::ShipMorph()
 		}
 
 		// basic intel: move the monster towards the player
-		ANaveAereaJugador* avatar = Cast<ANaveAereaJugador>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+		/*ANaveAereaJugador* avatar = Cast<ANaveAereaJugador>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 		if (!avatar)
 		{
 			return;
 
 		}
 		FVector toPlayer = avatar->GetActorLocation() - GetActorLocation();
-		toPlayer.Normalize();
+		toPlayer.Normalize();*/
 
 	}
 	else if (!ShipStatus.Compare("NaveAereaJugador Atacando"))

@@ -34,7 +34,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void Shooting() override;
-	void Bombing() override;
+	void Shooting() override;  // Dispara a la nave jugador
+	void Bombing() override;  //  Bombardear a la nave jugador
 
 };

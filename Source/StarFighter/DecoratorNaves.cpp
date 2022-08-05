@@ -27,6 +27,7 @@ void ADecoratorNaves::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	//Dibujar esfera de depuración
 
 	TArray<FHitResult> OutHits;
 
@@ -36,7 +37,7 @@ void ADecoratorNaves::BeginPlay()
 
 	DrawDebugSphere(GetWorld(), ActorLocation, MyColSphere.GetSphereRadius(), 100, FColor::Purple, true);
 
-	bool isHit = GetWorld()->SweepMultiByChannel(OutHits, ActorLocation, ActorLocation, FQuat::Identity, ECC_WorldStatic, MyColSphere);
+	bool isHit = GetWorld()->SweepMultiByChannel(OutHits, ActorLocation, ActorLocation, FQuat::Identity, ECC_WorldStatic, MyColSphere); //Barrido múltiple por canal
 
 	if (isHit)
 	{

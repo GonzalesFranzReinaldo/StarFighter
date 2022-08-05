@@ -32,6 +32,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	// Estas variables son declaradas y seran convertidos a metodos o funciones
 	FString Nombre;
 	FString TipoCapsula;
 	FString TipoEfecto;

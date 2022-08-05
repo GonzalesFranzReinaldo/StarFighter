@@ -25,19 +25,19 @@ void APublisherObserver::Tick(float DeltaTime)
 
 }
 
-void APublisherObserver::SubscribeShip(AActor* Subscriber)
+void APublisherObserver::SubscribeShip(AActor* Subscriber)  // Subscribir a las naves
 {
 	//Add the passed Subscriber
 	Subscribers.Add(Subscriber);
 }
 
-void APublisherObserver::UnSubscribeShip(AActor* SubscriberToRemove)
+void APublisherObserver::UnSubscribeShip(AActor* SubscriberToRemove)  // Eliminar a los subscriptores
 {
 	// Remove the passed Subscriber
 	Subscribers.Remove(SubscriberToRemove);
 }
 
-void APublisherObserver::NotifySubscribersShip()
+void APublisherObserver::NotifySubscribersShip() //Notificar a los subscriptores
 {
 	//Loop for each Subscriber 
 	for (AActor* Actor : Subscribers)  // Iterador

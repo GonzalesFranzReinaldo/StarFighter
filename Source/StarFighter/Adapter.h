@@ -23,6 +23,7 @@ class STARFIGHTER_API IAdapter
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
+	// Declaramos las funciones puras o abstractas
 	virtual void Shooting() = 0;  // Disparo
 	virtual void Bombing() = 0;  // Bombardear a la Nave Jugador
 };
